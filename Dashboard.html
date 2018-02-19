@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add Meta for name , keywords, description -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fitness | Register Yourself!</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="./node_modules/bootstrap-imageupload/dist/css/bootstrap-imageupload.min.css">
+
+</head>
+<body>
+    
+    <!-- Create a container to fit full screen -->
+    <div>
+        <p>Hi</p>
+    </div>
+
+    <!-- Load the Script resources -->
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/vide/dist/jquery.vide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/807c255611.js"></script>
+
+    <!-- Profile Image Upload -->
+    <script src="./node_modules/bootstrap-imageupload/dist/js/bootstrap-imageupload.min.js"></script>
+    <script src="./js/main.js"></script>
+
+    <script>
+         var $imageupload = $('.imageupload');
+         $imageupload.imageupload();
+
+         $('#imageupload-disable').on('click', function() {
+             $imageupload.imageupload('disable');
+             $(this).blur();
+         })
+
+         $('#imageupload-enable').on('click', function() {
+             $imageupload.imageupload('enable');
+             $(this).blur();
+         })
+
+         $('#imageupload-reset').on('click', function() {
+             $imageupload.imageupload('reset');
+             $(this).blur();
+         });
+    </script>
+
+</body>
+</html>
+

@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="plugins/easy-loading/easy-loading.css">
 
 </head>
 <body>
@@ -35,17 +36,17 @@
                             <form>
                                 <div class="form-group">
                                   <label for="exampleInputEmail1">Username or Email address</label>
-                                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                                   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                 </div>
                                 <div class="form-group">
                                   <label for="exampleInputPassword1">Password</label>
-                                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                 </div>
                                 <!-- <div class="form-check">
                                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 </div> -->
-                                <button type="button" class="btn btn-primary">Login</button>
+                                <button type="button" class="btn btn-primary" onClick="handleLogin(this.form)">Login</button>
                                 <div class="form-group">
                                     <a href="forgotPassword.html">Forgot Password</a> <span>or</span>
                                     <a href="register.html">Register New User</a>
@@ -74,7 +75,54 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/807c255611.js"></script>
+    <script src="plugins/easy-loading/easy-loading.js"></script>
+    <script src="plugins/bootbox.min.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/LoginController.js"></script>
+
+    <script>
+        // Handle Login
+      window.loginController = new LoginController();
+      
+      function handleLogin(Form) {
+        
+        EasyLoading.show({
+          type: EasyLoading.TYPE.LINE_SCALE_PULSE_OUT
+        });
+        var sUserName;
+        var sPassword;
+        debugger;
+        if (Form.email.value && Form.email.value !== "") {
+          sUserName = Form.email.value;
+        } else {
+          // Handle Error
+          bootbox.dialog({
+                title: 'Login Failed',
+                message: 'Please enter Email to proceed',
+                size: "small"
+            });    
+            EasyLoading.hide();
+            return;
+        }
+
+        if (Form.password.value && Form.password.value !== "") {
+          sPassword = Form.password.value;
+        } else {
+          // Throw Error Asking Password
+          bootbox.dialog({
+                title: 'Login Failed',
+                message: 'Please enter Password to proceed'
+            });
+          EasyLoading.hide();    
+          return;
+        }
+
+        if (sUserName && sPassword) {
+          loginController.login(sUserName, sPassword);
+        }
+        EasyLoading.hide();
+      }
+    </script>
 
 </body>
 </html>

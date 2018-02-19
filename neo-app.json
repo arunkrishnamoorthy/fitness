@@ -1,0 +1,41 @@
+{
+    "welcomeFile": "index.html",
+    "authenticationMethod": "none",
+    "routes": [
+      {
+        "path": "/resources",
+        "target": {
+          "type": "service",
+          "name": "sapui5",
+          "entryPath": "/resources"
+        },
+        "description": "SAPUI5 Resources"
+      },
+      {
+        "path": "/test-resources",
+        "target": {
+          "type": "service",
+          "name": "sapui5",
+          "entryPath": "/test-resources"
+        },
+        "description": "SAPUI5 Test Resources"
+      },
+      {
+        "path": "iotdata_destination",
+        "target": {
+          "type": "destination",
+          "name": "P1942584482_iot_xs_api"
+        },
+        "description": "IOT User Data"
+      },
+      {
+        "path": "iot_basic",
+        "target": {
+          "type": "destination",
+          "name": "iot_basic"
+        },
+        "description": "IOT User Data"
+      } 
+    ],
+    "sendWelcomeFileRedirect": true
+  }
