@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add Meta for name , keywords, description -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fitness | Register Yourself!</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="./node_modules/bootstrap-imageupload/dist/css/bootstrap-imageupload.min.css">
+
+</head>
+<body>
+    
+    <!-- Create a container to fit full screen -->
+    <div class="registration">
+        <div class="container">
+            
+            <!-- Form Name -->
+        <form class="registration-form">
+            <fieldset>
+            <legend class="text-white"><center><h2><b>Registration Form</b></h2></center></legend><br>
+            <!-- First Name -->
+            <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-white">First Name</label>  
+                    <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                    <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+                      </div>
+                    </div>
+            </div>
+
+            <!-- Last Name -->
+            <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-white">Last Name</label>  
+                    <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                    <input  name="last_name" placeholder="Last Name" class="form-control"  type="text">
+                      </div>
+                    </div>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-white">Date of Birth</label>  
+                    <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                    <input  name="date_of_birth" placeholder="Date of Birth" class="form-control"  type="date">
+                      </div>
+                    </div>
+            </div>
+
+            <!-- Email Address -->
+            <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-white">E-Mail Address</label>  
+                    <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                    <input  name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+                      </div>
+                    </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-white">Password</label>  
+                    <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                    <input  name="password" placeholder="Password" class="form-control"  type="password">
+                      </div>
+                    </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-white">Confirm Password</label>  
+                    <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                    <input  name="confirm_password" placeholder="Re-Enter Password" class="form-control"  type="password">
+                      </div>
+                    </div>
+            </div>
+
+            <!-- Profile Picture -->
+            <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-white">Profile Picture</label>  
+                    <div class="imageupload registration-upload-panel">
+                            
+                            <div class="file-tab panel-body">
+                                <label class="btn btn-success btn-file registration-upload-btn">
+                                    <span>Browse</span>
+                                    <!-- The file is stored here. -->
+                                    <input type="file" name="image-file">
+                                </label>
+                                <button type="button" class="btn btn-success">Remove</button>
+                            </div>
+                            <div class="url-tab panel-body">
+                                <!-- <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Image URL">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default">Submit</button>
+                                    </div>
+                                </div> -->
+                                <!-- <button type="button" class="btn">Remove</button> -->
+                                <!-- The URL is stored here. -->
+                                <input type="hidden" name="image-url">
+                            </div>
+                        </div>    
+            </div>
+
+            <!-- Submit -->
+            <div class="form-group">
+                    <label class="col-sm-2 col-form-label text-white"></label>
+                    <div class="col-md-4 inputGroupContainer">
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            <button type="input" class="btn btn-danger">Sign Up<span class="glyphicon glyphicon-send"></span></button>
+                    </div>
+            </div>
+
+            </fieldset>
+          </form>
+        </div>
+    </div>
+
+    <!-- Load the Script resources -->
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/vide/dist/jquery.vide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/807c255611.js"></script>
+
+    <!-- Profile Image Upload -->
+    <script src="./node_modules/bootstrap-imageupload/dist/js/bootstrap-imageupload.min.js"></script>
+    <script src="./js/main.js"></script>
+
+    <script>
+         var $imageupload = $('.imageupload');
+         $imageupload.imageupload();
+
+         $('#imageupload-disable').on('click', function() {
+             $imageupload.imageupload('disable');
+             $(this).blur();
+         })
+
+         $('#imageupload-enable').on('click', function() {
+             $imageupload.imageupload('enable');
+             $(this).blur();
+         })
+
+         $('#imageupload-reset').on('click', function() {
+             $imageupload.imageupload('reset');
+             $(this).blur();
+         });
+    </script>
+
+</body>
+</html>
+

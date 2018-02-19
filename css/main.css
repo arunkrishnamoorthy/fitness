@@ -1,0 +1,235 @@
+/* body {
+    height: 100%;
+    position: relative;
+    font-family: 'Source Sans Pro';
+    font-weight: 300;
+} */
+
+.fullscreen {
+    /* Cover full screen */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* Hide content that overflows */
+    overflow: hidden;
+    /* Set Background properties */
+    background-size: cover;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: none;
+    /* Move this layer to back */
+    z-index: -1;
+}
+
+.registration {
+    /* Cover full screen */
+    /* position: absolute; */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* Hide content that overflows */
+    /* overflow: hidden; */
+    /* Set Background properties */
+    background-size: cover;
+    /* background-color: transparent; */
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: url('../img/registration4.jpeg');
+    /* Move this layer to back */
+    /* z-index: -1; */
+}
+
+.registration-form {
+    padding-top: 20px;
+}
+
+.registration-upload-btn {
+    margin-top: 6px;
+}
+
+.registration-upload-panel {
+    margin-left: 15px !important;
+}
+
+
+/** Forgot Password */
+.forgot-password {
+    /* Cover full screen */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* Hide content that overflows */
+    /* overflow: hidden; */
+    /* Set Background properties */
+    background-size: cover;
+    /* background-color: transparent; */
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: url('../img/forgot-password.jpg');
+    /* Move this layer to back */
+    /* z-index: -1; */
+}
+
+
+.overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* background-color: #cd9557; */
+    opacity: 0.75;
+    z-index: -1;
+}
+
+/* Content */
+.content {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 3rem;
+}
+
+.content .content-transparent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,46,102,.8);
+    /* background-color: #e53935; */
+    /* opacity: 0.10; */
+    transform: skewY(4deg);
+    transform-origin: bottom right;
+}
+
+.content .master-content h1 {
+    font-size: 2.5rem;
+}
+
+.content .master-content p {
+    font-size: 1.2rem;
+}
+
+.content .master-content p strong {
+    font-weight: 700;
+}
+
+.content .master-content .input-group-newsletter input {
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.content .master-content .input-group-newsletter button {
+    /* font-size: .8rem; */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem;
+    background-color: #ba7c37!important;
+    border-color: #ba7c37!important;
+}
+
+.btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
+    background-color: #ba7c37!important;
+    border-color: #ba7c37!important;
+}
+
+
+@media (min-width: 768px){
+    .content {
+        height: 100%;
+        width: 49.5rem;
+        padding-bottom: 0;
+    }
+
+    .content .content-transparent {
+        transform: skewX(-8deg);
+        transform-origin: top right;
+    }
+
+    .content .master-content {
+        padding-left: 3rem;
+        padding-right: 10rem;
+    }
+
+    .content .master-content h1 {
+        font-size: 3.5rem;
+    }
+    
+    .content .master-content p {
+        font-size: 1.3rem;
+    }
+
+    .registration {
+        /* Cover full screen */
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        /* Hide content that overflows */
+        /* overflow: hidden; */
+        /* Set Background properties */
+        background-size: cover;
+        /* background-color: transparent; */
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-image: url('../img/registration4.jpeg');
+        /* Move this layer to back */
+        /* z-index: -1; */
+    }
+    
+}
+
+/* Social Icons */
+.social-icons {
+    position: relative;
+}
+
+.social-icons ul {
+    margin-top: 2rem;
+}
+
+.social-icons ul>li {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: inline-block;
+}
+
+.social-icons ul>li>a{
+    display: block;
+    background-color: rgba(0,46,102,.8);
+    color: #ffffff;
+    border-radius: 100%;
+    font-size: 2rem;
+    height: 4rem;
+    width: 4rem;
+    line-height: 4rem;
+}
+
+@media (min-width: 768px){
+    .social-icons {
+        position: absolute;
+        right: 2.5em;
+        bottom: 2.5em;
+    }
+
+    .social-icons ul{
+        margin-top: 0;
+    }
+
+    .social-icons ul>li {
+        display: block;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+}
+
+
