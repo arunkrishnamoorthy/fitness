@@ -11,6 +11,7 @@
         debugger;
         var url = new URL(window.location.href);
         window.code = url.searchParams.get("code");
+        document.cookie = "code=" +  window.code;
         window.close();
     </script>
 </body>
