@@ -21,11 +21,13 @@
     <div class="container">
         <div class="tile job">
           <div class="header">
-            <div class="count">1</div>
-            <div class="title">Jobs</div>
+            <div class="count">0</div>
+            <div class="title">Devices</div>
           </div>
           <div class="body">
-            <div class="title">Awaiting Reallocation</div>
+            <div class="title">
+              <button class="btn btn-danger" onclick="handleRegisterDevice()">Register Device</button>
+            </div>
           </div>
         </div>
         <div class="tile job">
@@ -114,6 +116,21 @@
              $imageupload.imageupload('reset');
              $(this).blur();
          });
+
+
+         // Handle register device
+         function handleRegisterDevice(){
+            debugger;
+            var clientId = "MSsGZt9IUew";
+            var responseType = "code";
+            var scope = "basic_read move_read";
+            var callbackURL = "https://127.0.0.1:5500/Callback.html";
+            var url = "https://jawbone.com/auth/oauth2/auth";
+            var path = "?response_type=" + responseType + "&client_id=" + clientId + "&scope=" + scope + "&redirect_uri=" + callbackURL;
+            url = url + path;
+            window.open(url, "_blank", "location=yes");
+         }
+
     </script>
 
 </body>
