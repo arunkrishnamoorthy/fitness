@@ -102,7 +102,7 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
                     var items = data.data.items;
                     var oToday = moment();
                     var sToday = moment(oToday).format("YYYYMMDD");
-                    var oActiveTime,oBMR,oCalories,oDistance,oSteps;
+                    var oActiveTime = 0,oBMR = 0,oCalories = 0,oDistance = 0,oSteps = 0;
                     var oWeekActive = 0, oWeekBMR = 0, oWeekCalories = 0, oWeekDistance = 0, oWeekSteps = 0;
                     $.each(items,function(index,oItem){
                       if ( sToday === oItem.date ){
