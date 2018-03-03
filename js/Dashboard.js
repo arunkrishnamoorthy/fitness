@@ -16,6 +16,27 @@ Dashboard.prototype.GetOAuth = function(url){
 
 Dashboard.prototype.GetOToken = function(oAuth){
     debugger;
+    // Get access token 
+    var client_id = "";
+    var client_secret = "";
+    var grant_type="authorization_code";
+    var code = oAuth;
+
+    var url = "https://jawbone.com/auth/oauth2/token" + "?client_id=" + client_id +
+        "&client_secret=" + client_secret + "&grant_type=" + grant_type + "&code=" + code;
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        dataType:"json",
+        success: function(data,response){
+            debugger;
+        },
+        error: function(data,response){
+            debugger;
+        }
+    });
+
 }   
 
 
