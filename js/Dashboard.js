@@ -109,9 +109,9 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
                     });
 
                     document.getElementById("idActiveTimeToday").innerHTML = oActiveTime;
-                    document.getElementById("idBMRToday").innerHTML = oBMR;
-                    document.getElementById("idCaloriesToday").innerHTML = oCalories;
-                    document.getElementById("idDistanceToday").innerHTML = oDistance;
+                    document.getElementById("idBMRToday").innerHTML = oBMR.toFixed(2);
+                    document.getElementById("idCaloriesToday").innerHTML = oCalories.toFixed(2);
+                    document.getElementById("idDistanceToday").innerHTML = oDistance.toFixed(2);;
                     document.getElementById("idStepsToday").innerHTML = oSteps;
                 
                 },
