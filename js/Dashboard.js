@@ -35,7 +35,6 @@ Dashboard.prototype.GetOToken = function(oAuth){
             var refresh_token = data.refresh_token;
             var token_type = data.token_type;
             var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves";
-            //beforeSend: function(xhr){xhr.setRequestHeader('X-Test-Header', 'test-value');},
             var auth_value = token_type + " " + access_token;
             $.ajax({
                 type: "GET",
@@ -46,6 +45,7 @@ Dashboard.prototype.GetOToken = function(oAuth){
                 },
                 success: function(data,response){
                     debugger;
+                    var items = data.data.items;
                 },
                 error: function(response){
                     debugger;
@@ -61,4 +61,9 @@ Dashboard.prototype.GetOToken = function(oAuth){
 
 }   
 
+Dashboard.prototype.updateSelectedDeviceData = function(){
+    // Implement logic to get the OAuth Data for the selected device. 
 
+    var oAuth = "jF_LbmL3sgBFtTptYscH9BPpRbVH3Nos5gEKv9Z_POpNXBs12wVrpPVp7yiPhmgpW1OCWnRHe8gh7xZacFOon4H9bA56EPM0F3QduHr1dPyfYO5UpCruMKZqfMZ8c7MVTVmvNT1Jvh2mElEiCLaFPi4QM6t8bYfs9U0AdldD3GY5lYW7UzDvaCLrM2X9UO_PypyEIhDOPnXL4edZxb_S_lXRlI7-0LwK7pipyWc0OSMDgCYKc1ZBN6Q1S_sJ2fuDVTsORwQuXHMd9uFgtVYtNw";
+    this.GetOToken(oAuth);
+}

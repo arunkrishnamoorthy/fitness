@@ -256,6 +256,9 @@
     /* z-index: -1; */
 }
 
+.nav-item {
+    padding-right: 10px;
+}
 
 .tile {
   width:160px;
@@ -342,4 +345,8 @@
 
 .tile.invoice  .body {
   color: #0aa361;
+}
+
+.device-btn {
+    margin-top: 8px;
 }

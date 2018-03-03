@@ -18,72 +18,128 @@
     
     <!-- Create a container to fit full screen -->
     <div class="dashboard">
+
+    
+      <div class="container">
+
+            <nav class="navbar navbar-expand-lg">
+    
+    
+                <ul class="navbar-nav ml-auto">
+                    <!-- <li class="nav-item"><a href="" class="nav-link">My Device Data</a></li>
+                    <li class="nav-item"><a href="" class="nav-link">All Devices</a></li> -->
+                    <li class="nav-item"><button class="btn btn-primary">My Devices</button></li>
+                    <li class="nav-item"><button class="btn btn-primary">All Devices</button></li>
+                </ul>
+    
+                <form class="form-inline">
+                    <button class="btn btn-danger">Logout</button>
+                </form>
+    
+      </nav>
+
     <div class="container">
+        <!-- <div class="container"> -->
         <div class="tile job">
           <div class="header">
-            <div class="count">0</div>
+            <div class="count">1</div>
             <div class="title">Devices</div>
           </div>
           <div class="body">
             <div class="title">
-              <button class="btn btn-danger" onclick="handleRegisterDevice()">Register Device</button>
+              <button class="btn btn-danger device-btn" onclick="handleRegisterDevice()">Register Device</button>
             </div>
           </div>
         </div>
         <div class="tile job">
           <div class="header">
             <div class="count">4</div>
-            <div class="title">Jobs</div>
+            <div class="title">Total Devices</div>
           </div>
           <div class="body">
-            <div class="title">Awaiting Scope of Works</div>
+            <div class="title">
+                <button class="btn btn-danger device-btn" onclick="">Manage Devices</button>
+            </div>
           </div>
         </div>
+      
         <div class="tile wide resource">
           <div class="header">
             <div class="left">
               <div class="count">2</div>
-              <div class="title">Resources</div>
+              <div class="title">Today</div>
             </div>
             <div class="right">
               <div class="count">34</div>
-              <div class="title">Jobs Affected</div>
+              <div class="title">Last 7 Days</div>
             </div>
           </div>
           <div class="body">
-            <div class="title">Resource Availability</div>
+            <div class="title">Active Time</div>
           </div>
         </div>
          <div class="tile wide quote">
           <div class="header">
             <div class="left">
               <div class="count">2</div>
-              <div class="title">Quotes</div>
+              <div class="title">Today</div>
             </div>
             <div class="right">
               <div class="count">£2,450</div>
-              <div class="title">Total Value</div>
+              <div class="title">Last 7 Days</div>
             </div>
           </div>
           <div class="body">
-            <div class="title">Quotes Awaiting Approval</div>
+            <div class="title">BMR</div>
           </div>
         </div>
          <div class="tile wide invoice">
           <div class="header">
             <div class="left">
               <div class="count">6</div>
-              <div class="title">Invoices</div>
+              <div class="title">Today</div>
             </div>
             <div class="right">
               <div class="count">£4,876</div>
-              <div class="title">Total Value</div>
+              <div class="title">Last 7 Days</div>
             </div>
           </div>
           <div class="body">
-            <div class="title">Invoices Awaiting Approval</div>
+            <div class="title">Calories</div>
           </div>
         </div>
+
+        <div class="tile wide quote">
+            <div class="header">
+              <div class="left">
+                <div class="count">6</div>
+                <div class="title">Today</div>
+              </div>
+              <div class="right">
+                <div class="count">£4,876</div>
+                <div class="title">Last 7 Days</div>
+              </div>
+            </div>
+            <div class="body">
+              <div class="title">Steps</div>
+            </div>
+          </div>
+
+          <div class="tile wide resource">
+              <div class="header">
+                <div class="left">
+                  <div class="count">6</div>
+                  <div class="title">Today</div>
+                </div>
+                <div class="right">
+                  <div class="count">£4,876</div>
+                  <div class="title">Last 7 Days</div>
+                </div>
+              </div>
+              <div class="body">
+                <div class="title">Distance</div>
+              </div>
+            </div>
       </div>
     </div>
 
@@ -132,6 +188,9 @@
             url = url + path;
             window.dashboard.GetOAuth(url);
          };
+
+         // Handle the new device.
+         dashboard.updateSelectedDeviceData();
 
     </script>
 
