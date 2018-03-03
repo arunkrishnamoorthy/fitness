@@ -83,10 +83,11 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
             var access_token = data.access_token;
             var refresh_token = data.refresh_token;
             var token_type = data.token_type;
-            var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves";
-            
+            var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves";            
             // var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves?start_time=1519662718";
-            var parameter = "?start_time=1519662718";
+            var last_week = moment().subtract(7, 'days');
+            var epochValue = moment(last_week).unix();
+            var parameter = "?start_time=" + epochValue;
             url = url + parameter;
             var auth_value = token_type + " " + access_token;
             $.ajax({
@@ -99,13 +100,25 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
                 success: function(data,response){
                     debugger;
                     var items = data.data.items;
+                    var oToday = moment();
+                    var sToday = moment(oToday).format("YYYYMMDD");
                     var oActiveTime,oBMR,oCalories,oDistance,oSteps;
+                    var oWeekActive = 0, oWeekBMR = 0, oWeekCalories = 0, oWeekDistance = 0, oWeekSteps = 0;
                     $.each(items,function(index,oItem){
-                      oActiveTime = oItem.details.active_time;
-                      oBMR = oItem.details.bmr;
-                      oCalories = oItem.details.calories;
-                      oDistance = oItem.details.km; //distance
-                      oSteps = oItem.details.steps;
+                      if ( sToday === oItem.date ){
+                        oActiveTime = oItem.details.active_time;
+                        oBMR = oItem.details.bmr;
+                        oCalories = oItem.details.calories;
+                        oDistance = oItem.details.km; //distance
+                        oSteps = oItem.details.steps;
+                      }
+                      
+                      oWeekActive = oWeekActive + oItem.details.active_time;
+                      oWeekBMR = oWeekBMR + oItem.details.bmr;
+                      oWeekCalories = oWeekCalories + oItem.details.calories;
+                      oWeekDistance = oWeekDistance + oItem.details.km;
+                      oWeekSteps = oWeekSteps + oItem.details.steps;
+
                     });
 
                     document.getElementById("idActiveTimeToday").innerHTML = oActiveTime;
@@ -113,6 +126,12 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
                     document.getElementById("idCaloriesToday").innerHTML = oCalories.toFixed(2);
                     document.getElementById("idDistanceToday").innerHTML = oDistance.toFixed(2);;
                     document.getElementById("idStepsToday").innerHTML = oSteps;
+                
+                    document.getElementById("idActiveTimeWeek").innerHTML = oWeekActive;
+                    document.getElementById("idBMRWeek").innerHTML = oWeekBMR.toFixed(2);
+                    document.getElementById("idCaloriesWeek").innerHTML = oWeekCalories.toFixed(2);
+                    document.getElementById("idDistanceWeek").innerHTML = oWeekDistance.toFixed(2);;
+                    document.getElementById("idStepsWeek").innerHTML = oWeekSteps;
                 
                 },
                 error: function(response){
