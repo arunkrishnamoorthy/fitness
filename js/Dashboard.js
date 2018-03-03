@@ -79,15 +79,15 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
         url: url,
         dataType: "json",
         success: function(data,response){
-            debugger;
+            
             var access_token = data.access_token;
             var refresh_token = data.refresh_token;
             var token_type = data.token_type;
             var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves";
             
-            var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves?start_time=1519662718";
-            var parameter = "?start_time=1519645814000";
-            // url = url + parameter;
+            // var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves?start_time=1519662718";
+            var parameter = "?start_time=1519662718";
+            url = url + parameter;
             var auth_value = token_type + " " + access_token;
             $.ajax({
                 type: "GET",
