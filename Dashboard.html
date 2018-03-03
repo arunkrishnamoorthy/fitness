@@ -55,7 +55,7 @@
                     <!-- <li class="nav-item"><a href="" class="nav-link">My Device Data</a></li>
                     <li class="nav-item"><a href="" class="nav-link">All Devices</a></li> -->
                     <li class="nav-item"><button class="btn btn-primary">My Devices</button></li>
-                    <li class="nav-item"><button class="btn btn-primary">All Devices</button></li>
+                    <li class="nav-item"><button class="btn btn-primary">Logout</button></li>
                 </ul>
               <!-- </ul> -->
           </div>
@@ -63,8 +63,9 @@
 
     <div class="container">
     </div>
-    
+    <section>
     <div class="container">
+      <div class="row">
         <!-- <div class="container"> -->
         <div class="tile job">
           <div class="header">
@@ -168,6 +169,41 @@
             </div>
       </div>
     </div>
+    </div>
+  </section>
+
+    <!-- Chart -->
+    <section>
+      <div class="container">
+    <div class="row inview p-t-15">
+      <!-- BEGIN: lineChart -->
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="box">
+          <header class="b-b">
+            <h4>Chart 1</h4>
+          </header>
+          <div class="box-body collapse in">
+            <div id="idChart1" class="responsive-plot"></div>
+          </div>
+        </div>
+      </div>
+      <!-- END: lineChart -->
+
+      <!-- BEGIN: barChart -->
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="box">
+          <header class="b-b">
+            <h4>Chart 2</h4>
+          </header>
+          <div class="box-body collapse in">
+            <div id="idChart2" class="responsive-plot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+    <!-- END: .row -->
 
     <!-- Load the Script resources -->
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>

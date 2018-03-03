@@ -102,6 +102,7 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
                     var items = data.data.items;
                     var oToday = moment();
                     var sToday = moment(oToday).format("YYYYMMDD");
+                    var aChartData = [];
                     var oActiveTime = 0,oBMR = 0,oCalories = 0,oDistance = 0,oSteps = 0;
                     var oWeekActive = 0, oWeekBMR = 0, oWeekCalories = 0, oWeekDistance = 0, oWeekSteps = 0;
                     $.each(items,function(index,oItem){
@@ -119,6 +120,14 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
                       oWeekDistance = oWeekDistance + oItem.details.km;
                       oWeekSteps = oWeekSteps + oItem.details.steps;
 
+                      var oChartData = {};
+                      oChartData.date = oItem.date;
+                      oChartData.active = oItem.details.active_time;
+                      oChartData.bmr = oItem.details.bmr;
+                      oChartData.calories = oItem.details.calories;
+                      oChartData.distance = oItem.details.km;
+                      oChartData.steps = oItem.details.steps;
+                      aChartData.push(oChartData);
                     });
 
                     document.getElementById("idActiveTimeToday").innerHTML = oActiveTime;
@@ -132,7 +141,20 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
                     document.getElementById("idCaloriesWeek").innerHTML = oWeekCalories.toFixed(2);
                     document.getElementById("idDistanceWeek").innerHTML = oWeekDistance.toFixed(2);;
                     document.getElementById("idStepsWeek").innerHTML = oWeekSteps;
-                
+
+                    /** Chart -  */
+                    var trace1 = {
+                        type: "scatter",
+                        mode: "lines",
+                        name: 'Steps Analysis',
+                        x: aChartData.map(function (row) { return row["date"]; }),
+                        y: aChartData.map(function (row) { return row["active"]; }),
+                        line: { color: '#17BECF' }
+                    }
+                    var data = [trace1];
+                    layout.yaxis.title = "%";
+                    Plotly.newPlot('idChart1', data, layout, { displayModeBar: false });
+            
                 },
                 error: function(response){
                     debugger;
