@@ -85,7 +85,7 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
             var token_type = data.token_type;
             var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves";
             var parameter = "?start_time=1519645814000";
-            url = url + parameter;
+            // url = url + parameter;
             var auth_value = token_type + " " + access_token;
             $.ajax({
                 type: "GET",
