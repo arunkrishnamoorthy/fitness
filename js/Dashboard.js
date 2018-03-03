@@ -62,6 +62,7 @@ Dashboard.prototype.GetOToken = function(oAuth){
 }   
 
 Dashboard.prototype.updateSelectedDeviceData = function(){
+    debugger;
     // Implement logic to get the OAuth Data for the selected device. 
     var old_refresh_token = "-v54Cev6wyuM7BNV28fwN5bTmTMWoNQP8o28E63-8efdL2WxNgQvKekaCy5aBtavNNWfJhnfRQwlAN2iCODyqw";
     var client_id = "MSsGZt9IUew";
@@ -70,7 +71,7 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
      
     var callbackURL = window.location.origin + "/Callback.html";
     var url = "https://jawbone.com/auth/oauth2/token?";
-    var path = "client_id=" + clientId + "&client_secret=" + + "&grant_type=" + grant_type + "&refresh_token=" + old_refresh_token; 
+    var path = "client_id=" + client_id + "&client_secret=" + client_secret + "&grant_type=" + grant_type + "&refresh_token=" + old_refresh_token; 
     url = url + path;
 
     $.ajax({
