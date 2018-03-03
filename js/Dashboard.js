@@ -17,8 +17,8 @@ Dashboard.prototype.GetOAuth = function(url){
 Dashboard.prototype.GetOToken = function(oAuth){
     debugger;
     // Get access token 
-    var client_id = "";
-    var client_secret = "";
+    var client_id = "MSsGZt9IUew";
+    var client_secret = "807ce7cf440e76f03477bc574c31363c93a9865e";
     var grant_type="authorization_code";
     var code = oAuth;
 
