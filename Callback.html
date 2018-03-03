@@ -8,11 +8,11 @@
 </head>
 <body>
     <script>
-        debugger;
         var url = new URL(window.location.href);
-        window.code = url.searchParams.get("code");
-        document.cookie = "code=" +  window.code;
-        document.cookie = "cookie-msg-test=" + "Hello" + "; path=/";
+        var code = url.searchParams.get("code");
+        document.cookie = "code=" +  code;
+        var oParentWindow = window.opener;
+        oParentWindow.dashboard.GetOToken(code);
         window.close();
     </script>
 </body>

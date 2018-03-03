@@ -97,6 +97,7 @@
     <!-- Profile Image Upload -->
     <script src="./node_modules/bootstrap-imageupload/dist/js/bootstrap-imageupload.min.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/Dashboard.js"></script>
 
     <script>
          var $imageupload = $('.imageupload');
@@ -119,6 +120,7 @@
 
 
          // Handle register device
+         window.dashboard = new Dashboard();
          function handleRegisterDevice(){
             debugger;
             var clientId = "MSsGZt9IUew";
@@ -128,8 +130,8 @@
             var url = "https://jawbone.com/auth/oauth2/auth";
             var path = "?response_type=" + responseType + "&client_id=" + clientId + "&scope=" + scope + "&redirect_uri=" + callbackURL;
             url = url + path;
-            window.open(url, "_blank", "location=yes");
-         }
+            window.dashboard.GetOAuth(url);
+         };
 
     </script>
 
