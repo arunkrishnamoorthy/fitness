@@ -99,6 +99,19 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
                 success: function(data,response){
                     debugger;
                     var items = data.data.items;
+                    var oActiveTime;
+                    $.each(items,function(index,oItem){
+                      oActiveTime = oItem.details.active_time;
+                      var oBMR = oItem.details.bmr;
+                      var oCalories = oItem.details.calories;
+                      var oDistance = oItem.details.km; //distance
+                      var oSteps = oItem.details.steps;
+                    });
+
+                    var oDivToday = $("#idActiveTimeToday");
+                    oDivToday.innerHTML = oActiveTime;
+
+
                 },
                 error: function(response){
                     debugger;
