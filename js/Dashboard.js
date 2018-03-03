@@ -31,9 +31,31 @@ Dashboard.prototype.GetOToken = function(oAuth){
         dataType:"json",
         success: function(data,response){
             debugger;
+            var access_token = data.access_token;
+            var refresh_token = data.refresh_token;
+            var token_type = data.token_type;
+            var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves";
+            //beforeSend: function(xhr){xhr.setRequestHeader('X-Test-Header', 'test-value');},
+            var auth_value = token_type + " " + access_token;
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "json",
+                beforeSend: function(xhr){
+                    xhr.setRequestHeader('Authorization', auth_value );
+                },
+                success: function(data,response){
+                    debugger;
+                },
+                error: function(response){
+                    debugger;
+                }
+            });
+
+
         },
         error: function(data,response){
-            debugger;
+            // Error handling.
         }
     });
 
