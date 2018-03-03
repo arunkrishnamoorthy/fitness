@@ -99,19 +99,21 @@ Dashboard.prototype.updateSelectedDeviceData = function(){
                 success: function(data,response){
                     debugger;
                     var items = data.data.items;
-                    var oActiveTime;
+                    var oActiveTime,oBMR,oCalories,oDistance,oSteps;
                     $.each(items,function(index,oItem){
                       oActiveTime = oItem.details.active_time;
-                      var oBMR = oItem.details.bmr;
-                      var oCalories = oItem.details.calories;
-                      var oDistance = oItem.details.km; //distance
-                      var oSteps = oItem.details.steps;
+                      oBMR = oItem.details.bmr;
+                      oCalories = oItem.details.calories;
+                      oDistance = oItem.details.km; //distance
+                      oSteps = oItem.details.steps;
                     });
 
-                    var oDivToday = $("#idActiveTimeToday");
-                    oDivToday.innerHTML = oActiveTime;
-
-
+                    document.getElementById("idActiveTimeToday").innerHTML = oActiveTime;
+                    document.getElementById("idBMRToday").innerHTML = oBMR;
+                    document.getElementById("idCaloriesToday").innerHTML = oCalories;
+                    document.getElementById("idDistanceToday").innerHTML = oDistance;
+                    document.getElementById("idStepsToday").innerHTML = oSteps;
+                
                 },
                 error: function(response){
                     debugger;
