@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add Meta for name , keywords, description -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fitness | Register Yourself!</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./node_modules/bootstrap-imageupload/dist/css/bootstrap-imageupload.min.css">
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+    <div class="dashboard">
+
+        <!-- Header -->
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-padding">
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent"
+                    aria-expanded="false" aria-label="Toggle Navbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a href="#" class="navbar-brand text-white">
+                    Fitness Dashboard
+                </a>
+                <div id="navbarContent" class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- <li class="nav-item"> -->
+                            <!-- <button class="btn btn-primary">My Devices</button> -->
+                        <!-- </li> -->
+                        <li class="nav-item">
+                            <button class="btn btn-primary"><i class="fa fa-fw fa-sign-out"></i>Logout</button>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Search criteria -->
+        <div class="container">
+        </div>
+
+        <!-- Dashboard Tiles -->
+        <div class="container">
+            <div class="row">
+                <div class="tile job">
+                    <div class="header">
+                        <div class="count">1</div>
+                        <div class="title">Devices</div>
+                    </div>
+                    <div class="body">
+                        <div class="title">
+                            <button class="btn btn-danger device-btn" onclick="handleRegisterDevice()">Register Device</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile job">
+                    <div class="header">
+                        <div class="count">0</div>
+                        <div class="title">Total Devices</div>
+                    </div>
+                    <div class="body">
+                        <div class="title">
+                            <button class="btn btn-danger device-btn" onclick="">Manage Devices</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile wide resource">
+                    <div class="header">
+                        <div class="left">
+                            <div id="idActiveTimeToday" class="count">0</div>
+                            <div class="title">Today</div>
+                        </div>
+                        <div class="right">
+                            <div class="count" id="idActiveTimeWeek">0</div>
+                            <div class="title">Last 7 Days</div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="title">Active Time</div>
+                    </div>
+                </div>
+                <div class="tile wide quote">
+                    <div class="header">
+                        <div class="left">
+                            <div id="idBMRToday" class="count">0</div>
+                            <div class="title">Today</div>
+                        </div>
+                        <div class="right">
+                            <div class="count" id="idBMRWeek">0</div>
+                            <div class="title">Last 7 Days</div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="title">BMR</div>
+                    </div>
+                </div>
+                <div class="tile wide invoice">
+                    <div class="header">
+                        <div class="left">
+                            <div id="idCaloriesToday" class="count">0</div>
+                            <div class="title">Today</div>
+                        </div>
+                        <div class="right">
+                            <div class="count" id="idCaloriesWeek">0</div>
+                            <div class="title">Last 7 Days</div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="title">Calories</div>
+                    </div>
+                </div>
+                <div class="tile wide quote">
+                    <div class="header">
+                        <div class="left">
+                            <div id="idStepsToday" class="count">0</div>
+                            <div class="title">Today</div>
+                        </div>
+                        <div class="right">
+                            <div class="count" id="idStepsWeek">0</div>
+                            <div class="title">Last 7 Days</div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="title">Steps</div>
+                    </div>
+                </div>
+                <div class="tile wide resource">
+                    <div class="header">
+                        <div class="left">
+                            <div id="idDistanceToday" class="count">0</div>
+                            <div class="title">Today</div>
+                        </div>
+                        <div class="right">
+                            <div class="count" id="idDistanceWeek">0</div>
+                            <div class="title">Last 7 Days</div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="title">Distance(KM)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Tiles -->
+        <div class="container padding-up">
+            <div class="row padding-right">
+                <div class="col-sm-12 col-md-6">
+                    <div id="idChart1"></div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                        <div id="idChart2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container padding-up">
+                <div class="row padding-right">
+                    <div class="col-sm-12 col-md-6">
+                        <div id="idChart3"></div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                            <div id="idChart4"></div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+    <!-- Load the Script resources -->
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/vide/dist/jquery.vide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+        crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/807c255611.js"></script>
+
+    <!-- Profile Image Upload -->
+    <script src="./node_modules/bootstrap-imageupload/dist/js/bootstrap-imageupload.min.js"></script>
+    <script src="./bower_components/moment/min/moment.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/Dashboard.js"></script>
+
+    <script>
+        var $imageupload = $('.imageupload');
+        $imageupload.imageupload();
+
+        $('#imageupload-disable').on('click', function () {
+            $imageupload.imageupload('disable');
+            $(this).blur();
+        })
+
+        $('#imageupload-enable').on('click', function () {
+            $imageupload.imageupload('enable');
+            $(this).blur();
+        })
+
+        $('#imageupload-reset').on('click', function () {
+            $imageupload.imageupload('reset');
+            $(this).blur();
+        });
+
+
+        // Handle register device
+        window.dashboard = new Dashboard();
+        function handleRegisterDevice() {
+            debugger;
+            var clientId = "MSsGZt9IUew";
+            var responseType = "code";
+            var scope = "basic_read move_read";
+            var callbackURL = window.location.origin + "/Callback.html";
+            var url = "https://jawbone.com/auth/oauth2/auth";
+            var path = "?response_type=" + responseType + "&client_id=" + clientId + "&scope=" + scope + "&redirect_uri=" + callbackURL;
+            url = url + path;
+            window.dashboard.GetOAuth(url);
+        };
+
+        // Handle the new device.
+        dashboard.updateSelectedDeviceData();
+
+    </script>
+
+</body>
+
+</html>

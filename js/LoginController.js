@@ -54,7 +54,7 @@ LoginController.prototype.login = function(sUserName, sPassword){
                 // sessionStorage.setItem("UserName",oLoginData.UserName);
                 window.EasyLoading.hide();
             //     // window.location.href = window.location.href + "Dashboard.html"
-                window.location.href = "Dashboard.html";
+                window.location.href = "DashboardNew.html";
             // } else {
             //     bootbox.dialog({
             //         title: 'Login Failed',

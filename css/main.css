@@ -239,21 +239,21 @@
 
 .dashboard {
     /* Cover full screen */
-    position: absolute;
+    /* position: absolute; 
     top: 0;
     right: 0;
     bottom: 0;
-    left: 0;
+    left: 0; */
     /* Hide content that overflows */
     /* overflow: hidden; */
     /* Set Background properties */
     background-size: cover;
     /* background-color: transparent; */
     background-repeat: no-repeat;
-    background-position: 50% 50%;
+    /* background-position: 50% 50%; */
     background-image: url('../img/dashboard.jpg');
-    /* Move this layer to back */
-    /* z-index: -1; */
+    background-attachment: fixed;
+    background-position: center;
 }
 
 .nav-item {
@@ -352,5 +352,17 @@
 }
 
 .navbar-padding {
-    margin-left: 16px;
+    /* margin-left: -10px; */
+}
+
+.padding-up{
+    padding-top: 30px;
+}
+
+.padding-right{
+    padding-right: 50px;
+}
+
+.navbar-padding-right {
+    padding-right: 30px;
 }
