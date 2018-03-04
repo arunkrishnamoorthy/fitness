@@ -18,14 +18,10 @@ LoginController.prototype.login = function(sUserName, sPassword){
     var sUrl = "https://xs01p2000138187trial.hanatrial.ondemand.com/fit-analysis/db-logic/registration_login.xsjs";
     var oData = {
         "action" : "login",
-        "username" : "mani.gkn@sap.com",
-        "password" : "Welcome123"
+        "username" : sUserName,
+        "password" : sPassword
     };
 
-    // $.post(sUrl, oData, function(odata,oResponse){
-    //     debugger;
-    // });
-    // return;
     $.ajax({
         type: "POST",
         url: sUrl,
@@ -50,18 +46,12 @@ LoginController.prototype.login = function(sUserName, sPassword){
             // if (oLoginData.Password === sPassword) {
                 // Login Success
                 sessionStorage.setItem("SessionActive", true);
-                // sessionStorage.setItem("UserId", oLoginData.UserId);
+                sessionStorage.setItem("UserId", sUserName);
                 // sessionStorage.setItem("UserName",oLoginData.UserName);
                 window.EasyLoading.hide();
             //     // window.location.href = window.location.href + "Dashboard.html"
-                window.location.href = "DashboardNew.html";
-            // } else {
-            //     bootbox.dialog({
-            //         title: 'Login Failed',
-            //         message: 'Username or Password Does not Match'
-            //     });                    
-            //     return;
-            // }
+                window.location.href = "Dashboard1.html";
+ 
         }
     }); // End of Ajax Call
 
