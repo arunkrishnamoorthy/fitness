@@ -12,6 +12,7 @@
   <title>Fitness App | Dashboard</title>
 
   <!-- Bootstrap -->
+  <link rel="stylesheet" href="./css/main.css">
   <link href="./vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="./vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">>
@@ -409,8 +410,77 @@
           <div class="col-md-12">
             <div class="x_panel">
               <div class="x_title">
-                <h2>Weekly Summary
-                  <small>Activity shares</small>
+                <h2>Sentiment Analyis
+                </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                  <li>
+                    <a class="collapse-link">
+                      <i class="fa fa-chevron-up"></i>
+                    </a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                      <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li>
+                        <a href="#">Settings 1</a>
+                      </li>
+                      <li>
+                        <a href="#">Settings 2</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a class="close-link">
+                      <i class="fa fa-close"></i>
+                    </a>
+                  </li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+                <div class="clearfix"></div>
+                <div class="row" style="border-bottom: 1px solid #E0E0E0; padding-bottom: 5px; margin-bottom: 5px;">
+                  <div class="col-md-3" style="overflow:hidden;">
+                    <span class="sparkline_one" style="height: 160px; padding: 10px 25px;">
+                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                    </span>
+                    <h4 style="margin:18px">Word clouds of mostly used words</h4>
+                  </div>
+
+                  <div class="col-md-9">
+                    <div class="row" style="text-align: center;">
+                      <div id="tegcloud" class="col-lg-offset-4 col-lg-4">
+                        <a href="#">Workout</a>
+                        <a href="#">Active Steps</a>
+                        <a href="#">Distance Covered</a>
+                        <a href="#">Cross Fit</a>
+                        <a href="#">Calories burnt</a>
+                        <a href="#">Feeling Positive</a>
+                        <a href="#">Feeling Upset</a>
+                        <a href="#">No Hope</a>
+                        <a href="#">Pumped Up</a>
+                        <a href="#">группы</a>
+                        <a href="#">eiusmod</a>
+                        <a href="#">названию</a>
+                        <a href="#">используемая</a>
+                        <a href="#">каждые</a>
+                        <a href="#">вместо</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>Response Feedback
                 </h2>
                 <ul class="nav navbar-right panel_toolbox">
                   <li>
@@ -442,30 +512,24 @@
               <div class="x_content">
 
                 <div class="row" style="border-bottom: 1px solid #E0E0E0; padding-bottom: 5px; margin-bottom: 5px;">
-                  <div class="col-md-3" style="overflow:hidden;">
+                  <div class="col-md-5" style="overflow:hidden;">
                     <span class="sparkline_one" style="height: 160px; padding: 10px 25px;">
                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                     </span>
-                    <h4 style="margin:18px">Weekly sales progress</h4>
+                    <h4 style="margin:18px">Feed back statistics of response</h4>
                   </div>
 
-                  <div class="col-md-9">
+                  <div class="col-md-7">
                     <div class="row" style="text-align: center;">
-                      <div class="col-md-3">
-                        <canvas class="canvasDoughnut" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas>
-                        <h4 style="margin:0">Bounce Rates</h4>
-                      </div>
-                      <div class="col-md-3">
-                        <canvas class="canvasDoughnut" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas>
-                        <h4 style="margin:0">New Traffic</h4>
-                      </div>
-                      <div class="col-md-3">
-                        <canvas class="canvasDoughnut" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas>
-                        <h4 style="margin:0">Device Share</h4>
-                      </div>
-                      <div class="col-md-3">
-                        <canvas class="canvasDoughnut" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas>
-                        <h4 style="margin:0">Device Share</h4>
+                      <div class="row" style="text-align: center;">
+                        <div class="col-md-4">
+                          <img src="img/smiley_positive.jpg" width="50px" height="50px"></img>
+                          <h4 style="margin:0"><span>68</span> % Postive Response</h4>
+                        </div>
+                        <div class="col-md-4">
+                          <img src="img/smiley_negative.jpg" width="50px" height="50px"></img>
+                          <h4 style="margin:0"><span>32</span> % Negative Response</h4>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -474,7 +538,6 @@
             </div>
           </div>
         </div>
-
 
       </div>
       <!-- /page content -->
@@ -534,6 +597,23 @@
       var loginController = new LoginController();
       loginController.logout();
     });
+
+    // Sentiment Analyis
+    // $(document).ready(function(){
+    // var classes = ["teg-1", "teg-2", "teg-3", "teg-4", "teg-5"];
+    //   $("#tegcloud a").each(function(){
+    //       $(this).addClass(classes[~~(Math.random()*classes.length)]);
+    //   });
+    // });
+
+    $(document).ready(function(){
+    var classes = ["label label-primary","label label-success","label label-info","label label-warning","label label-default","label label-default","label label-danger"];
+      $(".tegcloud a").each(function(){
+          $(this).addClass(classes[~~(Math.random()*classes.length)]);
+      });
+    });
+
+
 
     window.dashboard = new Dashboard();
     // Get the user device data and accordingly fetch device.

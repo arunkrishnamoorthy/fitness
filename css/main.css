@@ -366,3 +366,34 @@
 .navbar-padding-right {
     padding-right: 30px;
 }
+
+/** Tag Cloud */
+.tegcloud
+{
+    height:300px;
+}
+.teg-1
+{
+    font-size: 12px; 
+    color: rgb(52, 152, 219);
+}
+.teg-2
+{
+    font-size: 16px; 
+    color: red;
+}
+.teg-3
+{
+    font-size: 20px; 
+    color: green
+}
+.teg-4
+{
+    font-size: 28px; 
+    color: yellow;
+}
+.teg-5
+{
+    font-size: 36px; 
+    color: purple;
+}
