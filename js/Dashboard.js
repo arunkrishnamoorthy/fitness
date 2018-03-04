@@ -191,7 +191,7 @@ Dashboard.prototype.updateSelectedDeviceData = function () {
 
                     // Chart 3
                     var trace2 = {
-                        type: "scatter",
+                        type: "bar",
                         mode: "line",
                         x: aChartData.map(function (row) { return row["date"]; }),
                         y: aChartData.map(function (row) { return row["calories"]; }),
@@ -203,7 +203,7 @@ Dashboard.prototype.updateSelectedDeviceData = function () {
 
                     // Chart 4
                     var trace2 = {
-                        type: "scatter",
+                        type: "bar",
                         mode: "line",
                         x: aChartData.map(function (row) { return row["date"]; }),
                         y: aChartData.map(function (row) { return row["distance"]; }),
