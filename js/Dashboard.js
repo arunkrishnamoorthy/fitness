@@ -6,12 +6,7 @@ function Dashboard() {
 }
 
 Dashboard.prototype.GetOAuth = function (url) {
-    debugger;
-    // window.EasyLoading.show({
-    //     type: EasyLoading.TYPE.LINE_SCALE_PULSE_OUT
-    // }); 
     window.open(url, "_blank", "location=yes");
-    // window.EasyLoading.hide();
 }
 
 Dashboard.prototype.GetOToken = function (oAuth) {
@@ -34,25 +29,25 @@ Dashboard.prototype.GetOToken = function (oAuth) {
             var access_token = data.access_token;
             var refresh_token = data.refresh_token;
             var token_type = data.token_type;
-            var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves";
-            var auth_value = token_type + " " + access_token;
-            $.ajax({
-                type: "GET",
-                url: url,
-                dataType: "json",
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', auth_value);
-                },
-                success: function (data, response) {
-                    debugger;
-                    var items = data.data.items;
-                },
-                error: function (response) {
-                    debugger;
-                }
-            });
+            // TODO Set the access token in backend 
 
-
+            // var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves";
+            // var auth_value = token_type + " " + access_token;
+            // $.ajax({
+            //     type: "GET",
+            //     url: url,
+            //     dataType: "json",
+            //     beforeSend: function (xhr) {
+            //         xhr.setRequestHeader('Authorization', auth_value);
+            //     },
+            //     success: function (data, response) {
+            //         debugger;
+            //         var items = data.data.items;
+            //     },
+            //     error: function (response) {
+            //         debugger;
+            //     }
+            // });
         },
         error: function (data, response) {
             // Error handling.
@@ -61,12 +56,15 @@ Dashboard.prototype.GetOToken = function (oAuth) {
 
 }
 
-Dashboard.prototype.updateSelectedDeviceData = function () {
+Dashboard.prototype.updateSelectedDeviceData = function (sClientId, sSecretKey, sRefreshToken) {
     debugger;
     // Implement logic to get the OAuth Data for the selected device. 
-    var old_refresh_token = "-v54Cev6wyuM7BNV28fwN5bTmTMWoNQP8o28E63-8efdL2WxNgQvKekaCy5aBtavNNWfJhnfRQwlAN2iCODyqw";
-    var client_id = "MSsGZt9IUew";
-    var client_secret = "807ce7cf440e76f03477bc574c31363c93a9865e";
+    // var old_refresh_token = "-v54Cev6wyuM7BNV28fwN5bTmTMWoNQP8o28E63-8efdL2WxNgQvKekaCy5aBtavNNWfJhnfRQwlAN2iCODyqw";
+    // var client_id = "MSsGZt9IUew";
+    // var client_secret = "807ce7cf440e76f03477bc574c31363c93a9865e";
+    var old_refresh_token = sRefreshToken;
+    var client_id = sClientId;
+    var client_secret = sSecretKey;
     var grant_type = "refresh_token";
 
     var callbackURL = window.location.origin + "/Callback.html";
@@ -106,6 +104,7 @@ Dashboard.prototype.updateSelectedDeviceData = function () {
                     var oActiveTime = 0, oBMR = 0, oCalories = 0, oDistance = 0, oSteps = 0;
                     var oWeekActive = 0, oWeekBMR = 0, oWeekCalories = 0, oWeekDistance = 0, oWeekSteps = 0;
                     $.each(items, function (index, oItem) {
+
                         if (sToday === oItem.date) {
                             oActiveTime = oItem.details.active_time;
                             oBMR = oItem.details.bmr;
@@ -131,7 +130,7 @@ Dashboard.prototype.updateSelectedDeviceData = function () {
                         oDate.setMonth(month);
                         oDate.setFullYear(year);
 
-                        oChartData.date = oDate;
+                        oChartData.date = moment(oDate).format("DD-MMM-YYYY");
                         oChartData.active = oItem.details.active_time;
                         oChartData.bmr = oItem.details.bmr.toFixed(2);
                         oChartData.calories = oItem.details.calories.toFixed(2);
@@ -140,11 +139,11 @@ Dashboard.prototype.updateSelectedDeviceData = function () {
                         aChartData.push(oChartData);
                     });
 
-                    document.getElementById("idActiveTimeToday").innerHTML = oActiveTime;
-                    document.getElementById("idBMRToday").innerHTML = oBMR.toFixed(2);
-                    document.getElementById("idCaloriesToday").innerHTML = oCalories.toFixed(2);
-                    document.getElementById("idDistanceToday").innerHTML = oDistance.toFixed(2);;
-                    document.getElementById("idStepsToday").innerHTML = oSteps;
+                    // document.getElementById("idActiveTimeToday").innerHTML = oActiveTime;
+                    // document.getElementById("idBMRToday").innerHTML = oBMR.toFixed(2);
+                    // document.getElementById("idCaloriesToday").innerHTML = oCalories.toFixed(2);
+                    // document.getElementById("idDistanceToday").innerHTML = oDistance.toFixed(2);;
+                    // document.getElementById("idStepsToday").innerHTML = oSteps;
 
                     document.getElementById("idActiveTimeWeek").innerHTML = oWeekActive;
                     document.getElementById("idBMRWeek").innerHTML = oWeekBMR.toFixed(2);
@@ -152,66 +151,118 @@ Dashboard.prototype.updateSelectedDeviceData = function () {
                     document.getElementById("idDistanceWeek").innerHTML = oWeekDistance.toFixed(2);;
                     document.getElementById("idStepsWeek").innerHTML = oWeekSteps;
 
-
-
-                    var trace2 = {
-                        type: "scatter",
-                        mode: "line",
-                        x: aChartData.map(function (row) { return row["date"]; }),
-                        y: aChartData.map(function (row) { return row["active"]; }),
-                        line: { color: '#7F7F7F' }
-                    }
-
-                    var data = [trace2];
-
-                    var layout = {
-                        title: 'Steps - Analysis',
-                        xaxis: {
-                            autorange: true,
-                            type: 'date'
+                    // Step Chart
+                    new Chart(document.getElementById("step-chart"), {
+                        type: 'line',
+                        data: {
+                          labels: aChartData.map(function (row) { return row["date"]; }),
+                          datasets: [{ 
+                              data: aChartData.map(function (row) { return row["steps"]; }),
+                              label: "Active Time",
+                              borderColor: "#3e95cd",
+                              fill: false
+                            }
+                          ]
                         },
-                        yaxis: {
-                            autorange: true,
-                            type: 'linear'
+                        options: {
+                          title: {
+                            display: false,
+                            text: 'Steps Analysis'
+                          }
                         }
-                    };
-                    Plotly.newPlot('idChart1', data, layout);
+                      });
 
-                    // Chart 2
-                    var trace2 = {
-                        type: "scatter",
-                        mode: "line",
-                        x: aChartData.map(function (row) { return row["date"]; }),
-                        y: aChartData.map(function (row) { return row["bmr"]; }),
-                        line: { color: '#7F7F7F' }
-                    }
-                    var data = [trace2];
-                    layout.title = "BMR"
-                    Plotly.newPlot('idChart2', data, layout);
+                    // Calories
+                    new Chart(document.getElementById("calories-chart"), {
+                        type: 'bar',
+                        data: {
+                          labels: aChartData.map(function (row) { return row["date"]; }),
+                          datasets: [{ 
+                              data: aChartData.map(function (row) { return row["calories"]; }),
+                              label: "Calories",
+                              borderColor: "#800080",
+                              fill: true,
+                              backgroundColor: "#800080"
+                            }
+                          ]
+                        },
+                        options: {
+                          title: {
+                            display: false,
+                            text: 'Calories'
+                          }
+                        }
+                      });
 
                     // Chart 3
-                    var trace2 = {
-                        type: "bar",
-                        mode: "line",
-                        x: aChartData.map(function (row) { return row["date"]; }),
-                        y: aChartData.map(function (row) { return row["calories"]; }),
-                        line: { color: '#7F7F7F' }
-                    }
-                    var data = [trace2];
-                    layout.title = "Calories"
-                    Plotly.newPlot('idChart3', data, layout);
+                    var presets = window.chartColors;
+                    new Chart(document.getElementById("bmr-chart"), {
+                        type: 'bar',
+                        data: {
+                          labels: aChartData.map(function (row) { return row["date"]; }),
+                          datasets: [{ 
+                              data: aChartData.map(function (row) { return row["bmr"]; }),
+                              label: "BMR",
+                              borderColor: "#008080",
+                              fill: true,
+                              backgroundColor: "#008080"
+                            }
+                          ]
+                        },
+                        options: {
+                          title: {
+                            display: false,
+                            text: 'World population per region (in millions)'
+                          }
+                        }
+                      });
 
-                    // Chart 4
-                    var trace2 = {
-                        type: "bar",
-                        mode: "line",
-                        x: aChartData.map(function (row) { return row["date"]; }),
-                        y: aChartData.map(function (row) { return row["distance"]; }),
-                        line: { color: '#7F7F7F' }
-                    }
-                    var data = [trace2];
-                    layout.title = "Distance"
-                    Plotly.newPlot('idChart4', data, layout);
+                      // Chart 3
+                    var presets = window.chartColors;
+                    new Chart(document.getElementById("distance-chart"), {
+                        type: 'line',
+                        data: {
+                          labels: aChartData.map(function (row) { return row["date"]; }),
+                          datasets: [{ 
+                              data: aChartData.map(function (row) { return row["distance"]; }),
+                              label: "Distance",
+                              borderColor: "#808000",
+                              backgroundColor: "#808000",
+                              fill: true
+                            }
+                          ]
+                        },
+                        options: {
+                          title: {
+                            display: false,
+                            text: 'World population per region (in millions)'
+                          }
+                        }
+                      });
+
+                      // Chart 5
+                    var presets = window.chartColors;
+                    new Chart(document.getElementById("active-chart"), {
+                        type: 'line',
+                        data: {
+                          labels: aChartData.map(function (row) { return row["date"]; }),
+                          datasets: [{ 
+                              data: aChartData.map(function (row) { return row["active"]; }),
+                              label: "Active Time",
+                              borderColor: "#DAF7A6",
+                              backgroundColor: "#DAF7A6",
+                              fill: true
+                            }
+                          ]
+                        },
+                        options: {
+                          title: {
+                            display: false,
+                            text: 'World population per region (in millions)'
+                          }
+                        }
+                      });
+
 
                 },
                 error: function (response) {
