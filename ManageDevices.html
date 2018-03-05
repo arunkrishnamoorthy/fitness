@@ -16,7 +16,12 @@
   <!-- Font Awesome -->
   <link href="./vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">>
   <link href="./vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
+      <!-- Datatables -->
+      <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+      <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+      <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+      <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+      <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
   <!-- Custom Theme Style -->
   <link href="./build/css/custom.min.css" rel="stylesheet">
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -154,41 +159,13 @@
               </div>
 
               <div class="x_content">
-
-                <div class="table-responsive">
-                  <table class="table table-striped jambo_table bulk_action">
-                    <thead>
-                      <tr class="headings">
-                        <th>
-                          <input type="checkbox" id="check-all" class="flat">
-                        </th>
-                        <th class="column-title">User Name </th>
-                        <th class="column-title">Client ID</th>
-                        <th class="column-title">Secret Key </th>
-                        <th class="column-title">Refresh Token </th>
-                        <th class="column-title">Status </th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <tr class="even pointer">
-                        <td class="a-center ">
-                          <input type="checkbox" class="flat" name="table_records">
-                        </td>
-                        <td class=" ">arunmba.rec@gmail.com</td>
-                        <td class=" ">MSsGZt9IUew</td>
-                        <td class=" ">807ce7cf440e76f03477bc574c31363c93a9865e <i class="success fa fa-long-arrow-up"></i></td>
-                        <td class=" ">-v54Cev6wyuM7BNV28fwN5bTmTMWoNQP8o28E63-8efdL2WxNgQvKekaCy5aBtavNNWfJhnfRQwlAN2iCODyqw</td>
-                        <td class=" ">Active</td>
-                        </td>
-                      </tr>
-                      
-                      
-                    </tbody>
-                  </table>
+                <div>
+                  <button class="btn btn-success" onclick="handleRegisterDevice()">Add Device</button>
+                  <button class="btn btn-danger">Delete Device</button>
                 </div>
-                        
-                    
+                <div class="table-responsive">
+                  <table id="tableDeviceList" class="display" width="100%"></table>
+                </div>
               </div>
             </div>
           </div>
@@ -227,6 +204,20 @@
   <script src="./vendors/moment/min/moment.min.js"></script>
   <script src="./vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
+ <!-- Datatables -->
+ <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+ <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+ <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+ <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+ <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+ <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+ <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+ <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+ <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+ <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+ <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+ <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+
   <!-- Custom Theme Scripts -->
   <script src="./build/js/custom.min.js"></script>
   <script src="./js/LoginController.js"></script>
@@ -234,7 +225,6 @@
   <script>
 
     // Handle the new device.
-    debugger;
     var sUserName = sessionStorage.getItem("UserId");
     var sName = sessionStorage.getItem("UserName");
     var SessionActive = sessionStorage.getItem("SessionActive");
@@ -257,7 +247,14 @@
     var sUrl = "https://xs01p2000138187trial.hanatrial.ondemand.com/fit-analysis/db-logic/devices.xsodata/devices"; 
     var sParameter = "?$filter=USERNAME eq '" + sUserName + "'";
     sUrl = sUrl + sParameter;
-
+    
+    $.extend( true, $.fn.dataTable.defaults, {
+    "searching": false,
+    "ordering": false,
+    "paging":   false,
+    "info":     false
+    });
+ 
     $.ajax({
       type: "GET",
       url: sUrl,
@@ -265,16 +262,48 @@
       success: function (data, response) {
         debugger;
         var aDeviceData = data.d.results;
-        var oDeviceData = aDeviceData[0];
-        var sClientId = oDeviceData.CLIENTID;
-        var sSecretKey = oDeviceData.SECRETKEY;
-        var sRefreshToken = oDeviceData.REFRESHTOKEN;
-        dashboard.updateSelectedDeviceData(sClientId, sSecretKey, sRefreshToken);
+        var aDataSet = [];
+        $.each(aDeviceData,function(index,oDeviceData){
+          var sUserName = oDeviceData.USERNAME;
+          var sClientId = oDeviceData.CLIENTID;
+          var sSecretKey = oDeviceData.SECRETKEY;
+          var sRefreshToken = oDeviceData.REFRESHTOKEN;
+          var aData = [sUserName,sClientId,sSecretKey,sRefreshToken];
+          aDataSet.push(aData);
+        });
+
+        $('#tableDeviceList').DataTable( {
+        data: aDataSet,
+        columns: [
+            { title: "User Name" },
+            { title: "Client Id" },
+            { title: "Secret Key" },
+            { title: "Refresh Token" }
+        ]
+       });
+        
       },
       error: function(response){
         debugger;
       }
     });
+
+    // Event handler
+    // Handle register device
+    window.dashboard = new Dashboard();
+      
+    function handleRegisterDevice() {
+        debugger;
+        var clientId = "MSsGZt9IUew";
+        var responseType = "code";
+        var scope = "basic_read move_read";
+        var callbackURL = window.location.origin + "/Callback.html";
+        var url = "https://jawbone.com/auth/oauth2/auth";
+        var path = "?response_type=" + responseType + "&client_id=" + clientId + "&scope=" + scope + "&redirect_uri=" + callbackURL;
+        url = url + path;
+        window.dashboard.GetOAuth(url);
+    };
+
 
   </script>
 </body>

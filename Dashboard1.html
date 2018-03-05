@@ -614,7 +614,6 @@
     });
 
 
-
     window.dashboard = new Dashboard();
     // Get the user device data and accordingly fetch device.
     var sUrl = "https://xs01p2000138187trial.hanatrial.ondemand.com/fit-analysis/db-logic/devices.xsodata/devices"; 
@@ -626,7 +625,6 @@
       url: sUrl,
       dataType: "json",
       success: function (data, response) {
-        debugger;
         var aDeviceData = data.d.results;
         var oDeviceData = aDeviceData[0];
         var sClientId = oDeviceData.CLIENTID;
@@ -638,7 +636,7 @@
         debugger;
       }
     });
-
+    
   </script>
 </body>
 
