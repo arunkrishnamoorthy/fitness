@@ -16,6 +16,7 @@ Dashboard.prototype.GetOToken = function (oAuth) {
     var client_secret = "807ce7cf440e76f03477bc574c31363c93a9865e";
     var grant_type = "authorization_code";
     var code = oAuth;
+    var sUserName = sessionStorage.getItem("UserId");
 
     var url = "https://jawbone.com/auth/oauth2/token" + "?client_id=" + client_id +
         "&client_secret=" + client_secret + "&grant_type=" + grant_type + "&code=" + code;
@@ -31,23 +32,26 @@ Dashboard.prototype.GetOToken = function (oAuth) {
             var token_type = data.token_type;
             // TODO Set the access token in backend 
 
-            // var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves";
-            // var auth_value = token_type + " " + access_token;
-            // $.ajax({
-            //     type: "GET",
-            //     url: url,
-            //     dataType: "json",
-            //     beforeSend: function (xhr) {
-            //         xhr.setRequestHeader('Authorization', auth_value);
-            //     },
-            //     success: function (data, response) {
-            //         debugger;
-            //         var items = data.data.items;
-            //     },
-            //     error: function (response) {
-            //         debugger;
-            //     }
-            // });
+            var sRefreshToken = oDeviceData.;
+            var sUrl = "https://xs01p2000138187trial.hanatrial.ondemand.com/fit-analysis/db-logic/devices.xsodata/devices"; 
+            var oData = {
+              USERNAME : sUserName,
+              CLIENTID: client_id,
+              SECRETKEY: client_secret,
+              REFRESHTOKEN: refresh_token
+            };
+
+            $.ajax({
+               type :"POST",
+               url: sUrl,
+               data: JSON.stringify(oData),
+               error: function (msg, textStatus) {
+                alert("Device Registration Failed");
+               },
+              success: function (data) {
+                alert("Device Registered Succesfully");
+              }
+            });
         },
         error: function (data, response) {
             // Error handling.
