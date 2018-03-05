@@ -31,8 +31,6 @@ Dashboard.prototype.GetOToken = function (oAuth) {
             var refresh_token = data.refresh_token;
             var token_type = data.token_type;
             // TODO Set the access token in backend 
-
-            var sRefreshToken = oDeviceData.;
             var sUrl = "https://xs01p2000138187trial.hanatrial.ondemand.com/fit-analysis/db-logic/devices.xsodata/devices"; 
             var oData = {
               USERNAME : sUserName,
