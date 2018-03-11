@@ -294,14 +294,17 @@
       
     function handleRegisterDevice() {
         debugger;
-        var clientId = "MSsGZt9IUew";
-        var responseType = "code";
-        var scope = "basic_read move_read";
-        var callbackURL = window.location.origin + "/Callback.html";
-        var url = "https://jawbone.com/auth/oauth2/auth";
-        var path = "?response_type=" + responseType + "&client_id=" + clientId + "&scope=" + scope + "&redirect_uri=" + callbackURL;
-        url = url + path;
-        window.dashboard.GetOAuth(url);
+        var clientId = prompt("Enter Client ID of device to be added", "e.g MSsGZt9IUew");
+        // var clientId = "MSsGZt9IUew";
+        if ( clientId != null ){
+          var responseType = "code";
+          var scope = "basic_read move_read";
+          var callbackURL = window.location.origin + "/Callback.html";
+          var url = "https://jawbone.com/auth/oauth2/auth";
+          var path = "?response_type=" + responseType + "&client_id=" + clientId + "&scope=" + scope + "&redirect_uri=" + callbackURL;
+          url = url + path;
+          window.dashboard.GetOAuth(url);
+        }
     };
 
 
