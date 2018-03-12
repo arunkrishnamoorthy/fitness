@@ -249,7 +249,55 @@
     window.dashboard = new Dashboard();
 
     // Get the user device data and accordingly fetch device.
-    function 
+    function fetchDevicesList() {
+      var sUrl = "https://xs01p2000138187trial.hanatrial.ondemand.com/fit-analysis/db-logic/devices.xsodata/devices";
+      var sParameter = "?$filter=USERNAME eq '" + sUserName + "'";
+      sUrl = sUrl + sParameter;
+
+      $.extend(true, $.fn.dataTable.defaults, {
+        "searching": false,
+        "ordering": false,
+        "paging": false,
+        "info": false
+      });
+
+      $.ajax({
+        type: "GET",
+        url: sUrl,
+        dataType: "json",
+        success: function (data, response) {
+          debugger;
+          var aDeviceData = data.d.results;
+          var aDataSet = [];
+          $.each(aDeviceData, function (index, oDeviceData) {
+            var sUserName = oDeviceData.USERNAME;
+            var sClientId = oDeviceData.CLIENTID;
+            var sSecretKey = oDeviceData.SECRETKEY;
+            var sRefreshToken = oDeviceData.REFRESHTOKEN;
+            var aData = [sUserName, sClientId, sSecretKey, sRefreshToken];
+            aDataSet.push(aData);
+          });
+
+          $('#tableDeviceList').DataTable({
+            data: aDataSet,
+            columns: [
+              { title: "User Name" },
+              { title: "Client Id" },
+              { title: "Secret Key" },
+              { title: "Refresh Token" }
+            ]
+          });
+
+        },
+        error: function (response) {
+          debugger;
+        }
+      });
+
+    }
+
+    // Fetch Devices List 
+    fetchDevicesList();    
 
     // Event handler
     // Handle register device
