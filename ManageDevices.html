@@ -16,12 +16,14 @@
   <!-- Font Awesome -->
   <link href="./vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">>
   <link href="./vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-      <!-- Datatables -->
-      <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-      <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-      <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-      <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-      <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+  <!-- Datatables -->
+  <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/select/1.2.5/css/select.dataTables.min.css">
+  <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
   <!-- Custom Theme Style -->
   <link href="./build/css/custom.min.css" rel="stylesheet">
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -113,7 +115,8 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <img src="img/img.jpg" alt=""><span id="idUserName2"></span>
+                  <img src="img/img.jpg" alt="">
+                  <span id="idUserName2"></span>
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -135,40 +138,50 @@
 
       <!-- page content -->
       <div class="right_col" role="main">
-        
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-              <div class="x_title">
-                <h2>List of Registered Devices</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
 
-              <div class="x_content">
-                <div>
-                  <button class="btn btn-success" onclick="handleRegisterDevice()">Add Device</button>
-                  <button class="btn btn-danger">Delete Device</button>
-                </div>
-                <div class="table-responsive">
-                  <table id="tableDeviceList" class="display" width="100%"></table>
-                </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>List of Registered Devices</h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li>
+                  <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                  </a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <i class="fa fa-wrench"></i>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a href="#">Settings 1</a>
+                    </li>
+                    <li>
+                      <a href="#">Settings 2</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="close-link">
+                    <i class="fa fa-close"></i>
+                  </a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+              <div>
+                <button class="btn btn-success" onclick="handleRegisterDevice()">Add Device</button>
+                <button class="btn btn-danger" onclick="handleDeleteDevice()">Delete Device</button>
+              </div>
+              <div class="table-responsive">
+                <table id="tableDeviceList" class="display" width="100%"></table>
               </div>
             </div>
           </div>
+        </div>
 
       </div>
       <!-- /page content -->
@@ -188,36 +201,27 @@
   <script src="./vendors/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- Chart.js -->
   <script src="./vendors/Chart.js/dist/Chart.min.js"></script>
-  <!-- Flot -->
-  <script src="./vendors/Flot/jquery.flot.js"></script>
-  <script src="./vendors/Flot/jquery.flot.pie.js"></script>
-  <script src="./vendors/Flot/jquery.flot.time.js"></script>
-  <script src="./vendors/Flot/jquery.flot.stack.js"></script>
-  <script src="./vendors/Flot/jquery.flot.resize.js"></script>
-  <!-- Flot plugins -->
-  <script src="./vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-  <script src="./vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-  <script src="./vendors/flot.curvedlines/curvedLines.js"></script>
+
   <!-- DateJS -->
   <script src="./vendors/DateJS/build/date.js"></script>
   <!-- bootstrap-daterangepicker -->
   <script src="./vendors/moment/min/moment.min.js"></script>
   <script src="./vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
- <!-- Datatables -->
- <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
- <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
- <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
- <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
- <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
- <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
- <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
- <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
- <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
- <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
- <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
- <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-
+  <!-- Datatables -->
+  <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+  <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+  <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+  <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+  <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+  <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+  <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+  <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+  <script src="https://cdn.datatables.net/select/1.2.5/js/dataTables.select.min.js"></script>
   <!-- Custom Theme Scripts -->
   <script src="./build/js/custom.min.js"></script>
   <script src="./js/LoginController.js"></script>
@@ -228,7 +232,7 @@
     var sUserName = sessionStorage.getItem("UserId");
     var sName = sessionStorage.getItem("UserName");
     var SessionActive = sessionStorage.getItem("SessionActive");
-    if (!SessionActive){
+    if (!SessionActive) {
       var loginController = new LoginController();
       loginController.logout();
       // return;
@@ -243,59 +247,19 @@
     });
 
     window.dashboard = new Dashboard();
-    // Get the user device data and accordingly fetch device.
-    var sUrl = "https://xs01p2000138187trial.hanatrial.ondemand.com/fit-analysis/db-logic/devices.xsodata/devices"; 
-    var sParameter = "?$filter=USERNAME eq '" + sUserName + "'";
-    sUrl = sUrl + sParameter;
-    
-    $.extend( true, $.fn.dataTable.defaults, {
-    "searching": false,
-    "ordering": false,
-    "paging":   false,
-    "info":     false
-    });
- 
-    $.ajax({
-      type: "GET",
-      url: sUrl,
-      dataType: "json",
-      success: function (data, response) {
-        debugger;
-        var aDeviceData = data.d.results;
-        var aDataSet = [];
-        $.each(aDeviceData,function(index,oDeviceData){
-          var sUserName = oDeviceData.USERNAME;
-          var sClientId = oDeviceData.CLIENTID;
-          var sSecretKey = oDeviceData.SECRETKEY;
-          var sRefreshToken = oDeviceData.REFRESHTOKEN;
-          var aData = [sUserName,sClientId,sSecretKey,sRefreshToken];
-          aDataSet.push(aData);
-        });
 
-        $('#tableDeviceList').DataTable( {
-        data: aDataSet,
-        columns: [
-            { title: "User Name" },
-            { title: "Client Id" },
-            { title: "Secret Key" },
-            { title: "Refresh Token" }
-        ]
-       });
-        
-      },
-      error: function(response){
-        debugger;
-      }
-    });
+    // Get the user device data and accordingly fetch device.
+    function 
 
     // Event handler
     // Handle register device
     window.dashboard = new Dashboard();
-      
+
     function handleRegisterDevice() {
-        debugger;
-        var clientId = prompt("Enter the Client ID from Jawbone to register", "");
-        //"MSsGZt9IUew";
+      debugger;
+      var clientId = prompt("Enter the Client ID from Jawbone to register", "");
+      //"MSsGZt9IUew";
+      if (clientId) {
         var responseType = "code";
         var scope = "basic_read move_read";
         var callbackURL = window.location.origin + "/Callback.html";
@@ -303,9 +267,33 @@
         var path = "?response_type=" + responseType + "&client_id=" + clientId + "&scope=" + scope + "&redirect_uri=" + callbackURL;
         url = url + path;
         window.dashboard.GetOAuth(url);
+      }
 
     };
 
+    function handleDeleteDevice() {
+      debugger;
+      var sUrl = "https://xs01p2000138187trial.hanatrial.ondemand.com/fit-analysis/db-logic/devices.xsodata/devices";
+      var dataTableRows = deviceTable.rows().data().toArray();
+      $("input.select-checkbox").each(function (index, checked) {
+        debugger;
+        if (checked.value === "true") {
+          var oDeleteRow = dataTableRows[index];
+          var sDeleteUrl = sUrl + "(USERNAME='" + oDeleteRow[1] + "',CLIENTID='" + oDeleteRow[2] + "')";
+          $.ajax({
+            type: "DELETE",
+            url: sDeleteUrl,
+            dataType: "json",
+            success: function (data, response) {
+              alert("Device Deleted Sucessfully!");
+            },
+            error: function () {
+              alert("Device Deletion failed");
+            }
+          });
+        }
+      });
+    }
 
   </script>
 </body>
