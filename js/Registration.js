@@ -23,8 +23,9 @@ RegisterUser.prototype.AddUser = function(oData){
             alert("User Registration Failed");
         },
         success: function (data) {
-            debugger;
             window.EasyLoading.hide();
+            alert("User Registration Successfull");
+            window.location.href = "index.html";
         }
     }); // End of Ajax Call
 }

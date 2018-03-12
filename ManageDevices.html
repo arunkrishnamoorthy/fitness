@@ -294,7 +294,8 @@
       
     function handleRegisterDevice() {
         debugger;
-        var clientId = "MSsGZt9IUew";
+        var clientId = prompt("Enter the Client ID from Jawbone to register", "");
+        //"MSsGZt9IUew";
         var responseType = "code";
         var scope = "basic_read move_read";
         var callbackURL = window.location.origin + "/Callback.html";
