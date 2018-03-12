@@ -618,10 +618,14 @@
       success: function (data, response) {
         var aDeviceData = data.d.results;
         var oDeviceData = aDeviceData[0];
-        var sClientId = oDeviceData.CLIENTID;
-        var sSecretKey = oDeviceData.SECRETKEY;
-        var sRefreshToken = oDeviceData.REFRESHTOKEN;
-        dashboard.updateSelectedDeviceData(sClientId, sSecretKey, sRefreshToken);
+        if (oDeviceData){
+          var sClientId = oDeviceData.CLIENTID;
+          var sSecretKey = oDeviceData.SECRETKEY;
+          var sRefreshToken = oDeviceData.REFRESHTOKEN;
+          dashboard.updateSelectedDeviceData(sClientId, sSecretKey, sRefreshToken);
+        } else {
+          alert("No Device Data to display");
+        }
       },
       error: function(response){
         debugger;

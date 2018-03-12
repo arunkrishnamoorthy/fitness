@@ -222,6 +222,7 @@
   <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
   <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
   <script src="https://cdn.datatables.net/select/1.2.5/js/dataTables.select.min.js"></script>
+  
   <!-- Custom Theme Scripts -->
   <script src="./build/js/custom.min.js"></script>
   <script src="./js/LoginController.js"></script>
@@ -274,18 +275,44 @@
             var sClientId = oDeviceData.CLIENTID;
             var sSecretKey = oDeviceData.SECRETKEY;
             var sRefreshToken = oDeviceData.REFRESHTOKEN;
-            var aData = [sUserName, sClientId, sSecretKey, sRefreshToken];
+            var aData = [false,sUserName, sClientId, sSecretKey, sRefreshToken];
             aDataSet.push(aData);
           });
 
-          $('#tableDeviceList').DataTable({
+          window.deviceTable = $('#tableDeviceList').DataTable({
             data: aDataSet,
             columns: [
+              {
+                data:   "active",
+                render: function ( data, type, row ) {
+                    if ( type === 'display' ) {
+                        return '<input type="checkbox" class="select-checkbox" value="false">';
+                    }
+                    return data;
+                }
+              },
               { title: "User Name" },
               { title: "Client Id" },
               { title: "Secret Key" },
               { title: "Refresh Token" }
-            ]
+            ],
+            columnDefs: [ {
+            orderable: false,
+            className: 'select-checkbox',
+            targets:   0
+            } ],
+            select: {
+                style:    'os',
+                selector: 'td:first-child'
+            },
+            order: [[ 1, 'asc' ]]
+          });
+
+
+          $(document).ready(function(){
+            $("input.select-checkbox").on('click',function(){
+              this.value = this.checked;
+            });
           });
 
         },
@@ -334,6 +361,7 @@
             dataType: "json",
             success: function (data, response) {
               alert("Device Deleted Sucessfully!");
+              window.location.reload(true);
             },
             error: function () {
               alert("Device Deletion failed");
