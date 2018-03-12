@@ -26,6 +26,7 @@ RegisterUser.prototype.AddUser = function(oData){
             window.EasyLoading.hide();
             alert("User Registration Successfull");
             window.location.href = "index.html";
+            
         }
     }); // End of Ajax Call
 }
