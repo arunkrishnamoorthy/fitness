@@ -43,8 +43,8 @@ Dashboard.prototype.GetOToken = function (oAuth) {
                type :"POST",
                url: sUrl,
                data: oData,
-               dataType: "json",
-              //  contentType: "application/json",
+              //  dataType: "json",
+               contentType: "application/json",
                error: function (msg, textStatus) {
                 alert("Device Registered Succesfully");
                },
