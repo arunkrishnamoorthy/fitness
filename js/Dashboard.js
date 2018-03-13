@@ -46,7 +46,7 @@ Dashboard.prototype.GetOToken = function (oAuth) {
                data: oData,
                dataType: "json",
               //  crossDomain: true,
-               contentType: 'application/json; charset=utf-8',
+              //  contentType: 'application/json; charset=utf-8',
                error: function (msg, textStatus) {
                 alert("Device Registered Succesfully");
                },
