@@ -43,7 +43,7 @@ Dashboard.prototype.GetOToken = function (oAuth) {
                type :"POST",
                url: sUrl,
                data: oData,
-               dataType: "json",
+               contentType: "application/json",
                error: function (msg, textStatus) {
                 alert("Device Registered Succesfully");
                },
@@ -95,7 +95,6 @@ Dashboard.prototype.updateSelectedDeviceData = function (sClientId, sSecretKey, 
                 type: "GET",
                 url: url,
                 dataType: "json",
-                contentType: "application/json",
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', auth_value);
                 },
