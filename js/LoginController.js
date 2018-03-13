@@ -47,7 +47,7 @@ LoginController.prototype.login = function(sUserName, sPassword){
                 // Login Success
                 sessionStorage.setItem("SessionActive", true);
                 sessionStorage.setItem("UserId", sUserName);
-                sessionStorage.setItem("UserName","Arun Krishnamoorthy");
+                sessionStorage.setItem("UserName",sUserName);
                 // sessionStorage.setItem("UserName",oLoginData.UserName);
                 window.EasyLoading.hide();
             //     // window.location.href = window.location.href + "Dashboard.html"
