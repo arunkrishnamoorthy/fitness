@@ -38,13 +38,14 @@ Dashboard.prototype.GetOToken = function (oAuth) {
               "SECRETKEY": client_secret,
               "REFRESHTOKEN": refresh_token
             };
-            oData = JSON.stringify(oData);
+            // oData = JSON.stringify(oData);
             $.ajax({
                type :"POST",
                headers: { "Content-Type": "application/json" }, 
                url: sUrl,
                data: oData,
                dataType: "json",
+               crossDomain: true,
               //  contentType: "application/json",
                error: function (msg, textStatus) {
                 alert("Device Registered Succesfully");
