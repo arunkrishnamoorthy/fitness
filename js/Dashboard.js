@@ -33,10 +33,10 @@ Dashboard.prototype.GetOToken = function (oAuth) {
             // TODO Set the access token in backend 
             var sUrl = "https://xs01p2000138187trial.hanatrial.ondemand.com/fit-analysis/db-logic/devices.xsodata/devices"; 
             var oData = {
-              USERNAME : sUserName,
-              CLIENTID: client_id,
-              SECRETKEY: client_secret,
-              REFRESHTOKEN: refresh_token
+              "USERNAME" : sUserName,
+              "CLIENTID": client_id,
+              "SECRETKEY": client_secret,
+              "REFRESHTOKEN": refresh_token
             };
 
             $.ajax({
