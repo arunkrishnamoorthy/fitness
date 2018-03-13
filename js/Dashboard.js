@@ -86,7 +86,7 @@ Dashboard.prototype.updateSelectedDeviceData = function (sClientId, sSecretKey, 
             var token_type = data.token_type;
             var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves";
             // var url = "https://jawbone.com/nudge/api/v.1.1/users/@me/moves?start_time=1519662718";
-            var last_week = moment().subtract(7, 'days');
+            var last_week = moment().subtract(30, 'days');
             var epochValue = moment(last_week).unix();
             var parameter = "?start_time=" + epochValue;
             url = url + parameter;
