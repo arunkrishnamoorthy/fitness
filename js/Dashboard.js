@@ -42,7 +42,7 @@ Dashboard.prototype.GetOToken = function (oAuth) {
             $.ajax({
                type :"POST",
                url: sUrl,
-               data: JSON.stringify(oData),
+               data: oData,
                contentType: "application/json",
                error: function (msg, textStatus) {
                 alert("Device Registered Succesfully");
