@@ -95,6 +95,7 @@ Dashboard.prototype.updateSelectedDeviceData = function (sClientId, sSecretKey, 
                 type: "GET",
                 url: url,
                 dataType: "json",
+                contentType: "application/json",
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', auth_value);
                 },
